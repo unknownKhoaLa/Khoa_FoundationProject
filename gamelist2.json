@@ -1,0 +1,26 @@
+[
+    {
+        "title": "StarCraft II: Wings of Liberty",
+        "platform": "PC",
+        "genre": "Real-time strategy",
+        "summary": "The game is set four years after the events of 1998's Brood War, and follows the exploits of Jim Raynor as he leads an insurgent group against the autocratic Terran Dominion. The game includes new and returning characters and locations from the original game."
+    },
+    {
+        "title": "Lost Ark",
+        "platform": "PC",
+        "genre": "Massively multiplayer online role-playing game",
+        "summary": "Lost Ark is a 3D fantasy MMORPG with action RPG style combat and a huge world to explore. Set sail on your own ship to discover new regions and battle powerful bosses with a raid party. Lost Ark offers a feature-rich gaming experience combined with stunning visuals and skill effects."
+    },
+    {
+        "title": "Call of Duty: Modern Warfare",
+        "platform": "Console",
+        "genre": "Shooters",
+        "summary": "The game takes place in a realistic and modern setting. The campaign follows a CIA officer and British SAS forces as they team up with rebels from the fictional country of Urzikstan, combating together against Russian forces who have invaded the country and the terrorist group Al-Qatala. The game's Special Ops mode features cooperative play missions that follow on from the campaign. The multiplayer mode supports cross-platform multiplayer and cross-platform progression for the first time in the series. "
+    },
+    {
+        "title": "League of Legends",
+        "platform": "PC",
+        "genre": "Multiplayer online battle arena",
+        "summary": "In the game, two teams of five players battle in player versus player combat, each team occupying and defending their half of the map. Each of the ten players controls a character, known as a \"champion\", with unique abilities and differing styles of play. During a match, champions become more powerful by collecting experience points, earning gold, and purchasing items to defeat the opposing team. In the game's main mode, Summoner's Rift, a team wins by pushing through to the enemy base and destroying their \"Nexus\", a large structure located within."
+    }
+]

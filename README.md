@@ -3,7 +3,7 @@
 
 ## Technologies used 
 - Python3
- - Modules: re, pymongo, json, Pandas
+  - Modules: re, pymongo, json, Pandas
 - Visual Studio Code
 - MongoDB
 - git SCM, GitHub

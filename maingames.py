@@ -5,7 +5,6 @@ import json
 import pprint
 
 
-
 # Setting db_week4 to the game project db on MongoDB
 client = MongoClient("127.0.0.1", 27017)
 db_week4 = client.week4
@@ -37,19 +36,19 @@ def add_game() -> games.VGame:
     # Typing a name of the video game
     while True:
         try:
-            print("\n\nWrite a new game title: ")
+            print("\nWrite a new game title: ")
             title = input(">>>")
             if not re.search(r"[\@\#\$\%\^\&\~\_\+\=\`\\\*]", title) == None:
                 raise ValueError
             else:
                 break
         except ValueError:
-            print("Please do not use special characters.")
+            print("\nPlease do not use special characters.")
     
     # Typing a platform of the video game
     while True:
         try:
-            print("\n\nType a platform 'PC', 'Console', or 'PC & Console': ")
+            print("\nType a platform 'PC', 'Console', or 'PC & Console': ")
             platform = (input(">>>"))
         
             if not platform == 'PC' and not platform == 'Console' and not platform == 'PC & Console':
@@ -57,12 +56,12 @@ def add_game() -> games.VGame:
             else:
                 break
         except ValueError:
-            print('Invalid input for game platform. Please type an platform')
+            print('\nInvalid input for game platform. Please type an platform')
 
     # Typing a summary of the video game
     while True:
         try:
-            print("\n\nWrite a summary about the video game: ")
+            print("\nWrite a summary about the video game: ")
             summary = (input(">>>"))
         
             if not re.search(r"[\@\#\$\%\^\&\~\_\+\=\`\\\*]", summary) == None:
@@ -70,7 +69,7 @@ def add_game() -> games.VGame:
             else:
                 break
         except ValueError:
-            print('Please do not use special characters.')
+            print('\nPlease do not use special characters.')
 
     # Childen of parent games.py
     if selectGame == 'a':
@@ -87,7 +86,7 @@ def add_game() -> games.VGame:
 
     return new_Game
 
-# Type (2): Updating the video game information to the database
+# Type (2): Updating the edited video game information to the database
 def update_game_db():
 
     while True:
@@ -104,26 +103,26 @@ def update_game_db():
                 break
                 
         except ValueError:
-            print("The game title does not exist in the database.")
+            print("\nThe game title does not exist in the database.")
             print("Please type the title again.")
 
 
-    # Updating the platfrom of the video game
+    # Updating the edited platfrom of the video game
     while True:
         name_game = {"title": type_title}
 
         try:
-            print("Type below to update: ")
+            print("\nType below to edit: ")
             print("\t a) platform")
             print("\t b) summary")
-            print("\t c) quit with no updates")
+            print("\t c) quit with no edits")
             type_update = input(">>>")            
             
 
-            # Updating the platform of the video game
+            # Updating the edited platform of the video game
             if type_update == 'a': 
                     
-                print("Type 'PC', 'Console', or 'PC & Console' to update:")
+                print("\nType 'PC', 'Console', or 'PC & Console' to update:")
                 update_platform = input(">>>")
                     
                 if not update_platform == 'PC' and not update_platform == 'Console' and not update_platform == 'PC & Console':
@@ -133,33 +132,32 @@ def update_game_db():
                     GameProject.update_one(name_game, update_info)
                     print(type_title + " is updated with new information to the platfrom.")
 
-            # Updating the summary of the video game
+            # Updating the edited summary of the video game
             elif type_update == 'b':
 
-                print("Write a new summary to update:")
+                print("\nWrite a new summary to update:")
                 update_summary = input(">>>")
                     
-                if not re.search(r"[\@\#\$\%\\\*]", update_summary) == None:
+                if not re.search(r"[\@\#\$\%\^\&\~\_\+\=\`\\\*]", update_summary) == None:
                     raise ValueError
                 else:
                     update_info2 = {"$set": {"summary" : update_summary}}
                     GameProject.update_one(name_game, update_info2)
                     print(type_title + " is updated with new information to the summary.")
 
-            # No update and quiting to go back to the main menu
+            # No edited and quiting to go back to the main menu
             elif type_update == 'c' :
-                print("No updates to the video game information.")
+                print("\nNo edits to the video game information.")
                 break
             else:
                 raise ValueError
 
         except ValueError:
-            print("Invalid input.")
+            print("\nInvalid input.")
 
 # Type (4): Deleting a video game information from the database
 def delete_game_db() :
     
-  
     while True:
         try:
             print('')
@@ -175,9 +173,11 @@ def delete_game_db() :
                 GameProject.delete_one(delete_game)
                 break
         except ValueError:
-            print("The game title does not exist in the database.")
+            print('')
+            print(type_title2 + " does not exist in the database.")
             print("Please type the title existed in the databse.")
 
+    print('')
     print(type_title2 + " is deleted from the list.")
     
 
@@ -253,10 +253,10 @@ def main():
         try:
             print('')
             print("The menu to select:")
-            print("\t1) Type '1' to add the video game to the list")
-            print("\t2) Type '2' to update a new info to the game in the database")
+            print("\t1) Type '1' to add a video game")
+            print("\t2) Type '2' to edit a new info to the game in the database")
             print("\t3) Type '3' to view the list of video games")
-            print("\t4) Type '4' to delete a video game from the list from the database")
+            print("\t4) Type '4' to delete a video game from the database")
             print("\t5) Type '5' to quit to save" )
 
             menu = input(">>>")
@@ -269,12 +269,11 @@ def main():
             # Adding a new video game to the list in the database and JSON file
             elif menu == '1':
                 newGame = add_game()
-                print(newGame)
-                print("The new video game is added to the JSON and the database.")
+                print("\nThe new video game is added to the JSON and the database.")
                 save_game_JSON(newGame) # for adding to the JSON 
                 save_game_db(newGame)   # for adding to the databae
 
-            # Updating the video game information to the database
+            # Updating the edited video game information to the database
             elif menu == '2':
                 
                 #Leading the list from the database

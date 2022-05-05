@@ -18,7 +18,7 @@ def add_game() -> games.VGame:
     while True:
         try:
             print('')
-            print("Please select a genre of video game to add: ")
+            print("Enter a genre of video game to add: ")
             print("\t a) Shooter")
             print("\t b) MMORPG")
             print("\t c) RTS")
@@ -71,6 +71,9 @@ def add_game() -> games.VGame:
         except ValueError:
             print('\nPlease do not use special characters.')
 
+    print('')
+    print( '"' +  title  +  '"' + " is added to the Encyclopedia.")
+
     # Childen of parent games.py
     if selectGame == 'a':
         new_Game = games.VGame(title, platform, summary)
@@ -83,7 +86,6 @@ def add_game() -> games.VGame:
     else:
         new_Game = games.sports(title, platform, summary)
 
-
     return new_Game
 
 # Type (2): Updating the edited video game information to the database
@@ -92,7 +94,7 @@ def update_game_db():
     while True:
         try:
             print('')
-            print("Type a game title to update: ")
+            print("Enter a title from above to update: ")
             type_title= input(">>>")
 
             find_game = GameProject.find_one({"title" : type_title})
@@ -104,7 +106,7 @@ def update_game_db():
                 
         except ValueError:
             print('')
-            print(type_title + "does not exist in the database.")
+            print('"' + type_title + '"' + " does not exist in the database.")
             print("Please enter the title again.")
 
 
@@ -175,11 +177,11 @@ def delete_game_db() :
                 break
         except ValueError:
             print('')
-            print(type_title2 + " does not exist in the database.")
-            print("Please enter a title existed in the databse.")
+            print('"' + type_title2 + '"' + " does not exist in the database.")
+            print("Please enter a title existed in the database.")
 
     print('')
-    print(type_title2 + " is deleted from the list.")
+    print('"' + type_title2 + '"' +" is deleted from the list.")
     
 
 # Type (1): Writing a video game information to the JSON file
@@ -279,7 +281,6 @@ def main():
             # Adding a new video game to the list in the database and JSON file
             elif menu == '1':
                 newGame = add_game()
-                print("\nThe new video game is added to the JSON and the database.")
                 save_game_JSON(newGame) # for adding to the JSON 
                 save_game_db(newGame)   # for adding to the databae
 

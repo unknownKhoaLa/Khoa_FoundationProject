@@ -28,5 +28,11 @@
         "platform": "PC & Console",
         "genre": "Sport",
         "summary": "Described as \"soccer, but with rocket-powered cars\", Rocket League has up to eight players assigned to each of the two teams, using rocket-powered vehicles to hit a ball into their opponent's goal and score points over the course of a match."
+    },
+    {
+        "title": "DOTA 2",
+        "platform": "PC",
+        "genre": "Multiplayer online battle arena",
+        "summary": "Dota 2 is a multiplayer online battle arena (MOBA) video game in which two teams of five players compete to collectively destroy a large structure defended by the opposing team known as the \"Ancient\", whilst defending their own."
     }
 ]

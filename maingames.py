@@ -3,6 +3,7 @@ import games
 from pymongo import MongoClient
 import json
 import pprint
+import pandas as pd
 
 
 # Setting db_week4 to the game project db on MongoDB
@@ -103,8 +104,9 @@ def update_game_db():
                 break
                 
         except ValueError:
-            print("\nThe game title does not exist in the database.")
-            print("Please type the title again.")
+            print('')
+            print(type_title + "does not exist in the database.")
+            print("Please enter the title again.")
 
 
     # Updating the edited platfrom of the video game
@@ -112,17 +114,17 @@ def update_game_db():
         name_game = {"title": type_title}
 
         try:
-            print("\nType below to edit: ")
+            print("\nEnter below to edit: ")
             print("\t a) platform")
             print("\t b) summary")
-            print("\t c) quit with no edits")
+            print("\t c) quit")
             type_update = input(">>>")            
             
 
             # Updating the edited platform of the video game
             if type_update == 'a': 
                     
-                print("\nType 'PC', 'Console', or 'PC & Console' to update:")
+                print("\nEnter 'PC', 'Console', or 'PC & Console' to update:")
                 update_platform = input(">>>")
                     
                 if not update_platform == 'PC' and not update_platform == 'Console' and not update_platform == 'PC & Console':
@@ -147,7 +149,7 @@ def update_game_db():
 
             # No edited and quiting to go back to the main menu
             elif type_update == 'c' :
-                print("\nNo edits to the video game information.")
+                print("\nNo edits made to the video game encyclopedia.")
                 break
             else:
                 raise ValueError
@@ -161,7 +163,7 @@ def delete_game_db() :
     while True:
         try:
             print('')
-            print("Please type a game title to delete: ")
+            print("Enter a title from above to delete: ")
             type_title2= input(">>>")
             
             find_game2 = GameProject.find_one({"title" : type_title2})
@@ -175,7 +177,7 @@ def delete_game_db() :
         except ValueError:
             print('')
             print(type_title2 + " does not exist in the database.")
-            print("Please type the title existed in the databse.")
+            print("Please enter a title existed in the databse.")
 
     print('')
     print(type_title2 + " is deleted from the list.")
@@ -222,42 +224,51 @@ def save_game_db(game):
 def load_gameslist():
 
     game = GameProject.find()
-    
+
+    # old way to print the list
+    '''   
     lst_games = []
-    
     for line in game:
-
         lst_games.append(line)
-
     return lst_games
-
+    '''
+    # Use Pandas to print the table
+    df = pd.DataFrame(list(game))           
+    print(df.loc[:, df.columns != '_id'])
 
 # Reading the list from the JSON file
 def load_gameslist2():
 
+
+    # old way to print the list
+    '''
     with open("gamelist2.json") as game_list:
         data = json.load(game_list)
         pprint.pprint(data, sort_dicts=False) # pprint for pretty list and no ordered.
-    
-
+    '''
+    # Use Pandas to print the table
+    df2 = pd.read_json("gamelist2.json")
+    print(df2)
 
 # Main function
 def main():
     print("The Video Games Encyclopedia")
 
-    # Loading the list from the database. 
+    # Loading the list from the database.
+    ''' 
     lst_Games = load_gameslist()
+    '''
 
     # Select a number from the menu
     while True:
         try:
             print('')
-            print("The menu to select:")
-            print("\t1) Type '1' to add a video game")
-            print("\t2) Type '2' to edit a new info to the game in the database")
-            print("\t3) Type '3' to view the list of video games")
-            print("\t4) Type '4' to delete a video game from the database")
-            print("\t5) Type '5' to quit to save" )
+            print("The menu to enter:")
+            print("\t1) Add a video game")
+            print("\t2) Edit a new info to the game in the database")
+            print("\t3) View the list of video games")
+            print("\t4) Delete a video game from the database")
+            print("\t5) Quit to save" )
 
             menu = input(">>>")
 
@@ -275,16 +286,19 @@ def main():
 
             # Updating the edited video game information to the database
             elif menu == '2':
-                
-                #Leading the list from the database
+
+                #Loading the list from the database
+                load_gameslist()
+                '''
                 for games in lst_Games:      
                     pprint.pprint(games, sort_dicts=False)
-
+                '''
                 update_game_db()
 
             # Reading the video game list from the JSON file
             elif menu == '3':
-
+                
+                #Loading the list from the JSON file
                 load_gameslist2()
                 
                 # this will not be used for the presentation. It is for reading the list from the database
@@ -298,17 +312,20 @@ def main():
             elif menu == '4':
                 
                 #Loading the list from the database
+                load_gameslist2()
+                '''
                 for games in lst_Games:      
                     pprint.pprint(games, sort_dicts=False)
-                
+                '''
+
                 delete_game_db()
 
-            # The error will occur if the user does not select any nunmber from the menu. 
+            # The error will occur if the user does not enter any nunmber from the menu. 
             else:
                 raise ValueError 
             
         except ValueError:
-            print("Invalid intput. Please select a number from the menu.")
+            print("Invalid intput. Please enter a number from the menu.")
 
 if __name__ == "__main__":
     main()

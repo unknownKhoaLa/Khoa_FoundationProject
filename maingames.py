@@ -48,7 +48,7 @@ def add_game() -> games.VGame:
     # Typing a platform of the video game
     while True:
         try:
-            print("\nType a platform 'PC', 'Console', or 'PC & Console': ")
+            print("\nType a platform - 'PC', 'Console', or 'PC & Console': ")
             platform = (input(">>>"))
         
             if not platform == 'PC' and not platform == 'Console' and not platform == 'PC & Console':
@@ -103,7 +103,8 @@ def update_game_db():
                 raise ValueError
             else:
                 break
-                
+        
+        # The error will occur when the title does not exist in the database. 
         except ValueError:
             print('')
             print('"' + type_title + '"' + " does not exist in the database.")
@@ -175,6 +176,8 @@ def delete_game_db() :
                 delete_game = {"title": type_title2}
                 GameProject.delete_one(delete_game)
                 break
+
+        # The error will occur when the title does not exist in the database. 
         except ValueError:
             print('')
             print('"' + type_title2 + '"' + " does not exist in the database.")

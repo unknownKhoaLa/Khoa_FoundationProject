@@ -184,7 +184,7 @@ def delete_game_db() :
             print("Please enter a title existed in the database.")
 
     print('')
-    print('"' + type_title2 + '"' +" is deleted from the list.")
+    print('"' + type_title2 + '"' +" is deleted from the encyclopedia.")
     
 
 # Type (1): Writing a video game information to the JSON file

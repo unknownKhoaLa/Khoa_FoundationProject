@@ -40,5 +40,17 @@
         "platform": "PC & Console",
         "genre": "Sport",
         "summary": "FIFA 22 introduces \"HyperMotion Technology,\" which uses motion capture data collected from 22 real-life playing a complete, high-intensity football match in motion capture suits. The data collected from player movements, such as tackles, aerial duels and on-ball actions informs FIFA 22 gameplay."
+    },
+    {
+        "title": "Doom 2",
+        "platform": "Console",
+        "genre": "Shooters",
+        "summary": "It is a shooter game. It is about hunting demons and defeating bosses."
+    },
+    {
+        "title": "Doom 1",
+        "platform": "PC",
+        "genre": "Shooters",
+        "summary": "Doom 1 is a shooter game. It is about hunting demons and defeating bosses."
     }
 ]

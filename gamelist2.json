@@ -52,5 +52,23 @@
         "platform": "PC",
         "genre": "Shooters",
         "summary": "Doom 1 is a shooter game. It is about hunting demons and defeating bosses."
+    },
+    {
+        "title": "Doom 1",
+        "platform": "PC",
+        "genre": "Shooters",
+        "summary": "It is a shooter game. Its goal is to hunt monsters."
+    },
+    {
+        "title": "Civilization V",
+        "platform": "PC",
+        "genre": "Real-time strategy",
+        "summary": "In Civilization V, the player leads a civilization from prehistoric times into the future on a procedurally generated map, attempting to achieve one of a number of different victory conditions through research, exploration, diplomacy, expansion, economic development, government and military conquest."
+    },
+    {
+        "title": "World of War",
+        "platform": "PC",
+        "genre": "Massively multiplayer online role-playing game",
+        "summary": "The allows players to create a character avatar and explore an open game world in third- or first-person view, exploring the landscape, fighting various monsters, completing quests, and interacting with non-player characters (NPCs) or other players. "
     }
 ]

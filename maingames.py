@@ -315,7 +315,7 @@ def main():
             elif menu == '4':
                 
                 #Loading the list from the database
-                load_gameslist2()
+                load_gameslist()
                 '''
                 for games in lst_Games:      
                     pprint.pprint(games, sort_dicts=False)

@@ -19,11 +19,12 @@ def add_game() -> games.VGame:
         try:
             print('')
             print("Enter a genre of video game to add: ")
-            print("\t a) Shooter")
-            print("\t b) MMORPG")
-            print("\t c) RTS")
-            print("\t d) MOBA")
-            print("\t e) Sport")
+            print("\t (a) Shooter")
+            print("\t (b) MMORPG")
+            print("\t (c) RTS")
+            print("\t (d) MOBA")
+            print("\t (e) Sport")
+            print("\t Select (a),(b),(c),(d),(e)")
             selectGame= input(">>>")
 
             if not selectGame == 'a' and not selectGame == 'b' and not selectGame == 'c' and not selectGame == 'd' and not selectGame == 'e':
@@ -94,7 +95,7 @@ def update_game_db():
     while True:
         try:
             print('')
-            print("Enter a title from above to update: ")
+            print("Enter a title from the encyclopedia above to update: ")
             type_title= input(">>>")
 
             find_game = GameProject.find_one({"title" : type_title})
@@ -107,7 +108,7 @@ def update_game_db():
         # The error will occur when the title does not exist in the database. 
         except ValueError:
             print('')
-            print('"' + type_title + '"' + " does not exist in the database.")
+            print('"' + type_title + '"' + " is not found in the Encyclopedia. It does not exist.")
             print("Please enter the title again.")
 
 
@@ -116,10 +117,10 @@ def update_game_db():
         name_game = {"title": type_title}
 
         try:
-            print("\nEnter below to edit: ")
-            print("\t a) platform")
-            print("\t b) summary")
-            print("\t c) quit")
+            print("\nDo you edit the video game? Select (a),(b),(c) ")
+            print("\t (a) Yes, edit its platform")
+            print("\t (b) Yes, edit its summary")
+            print("\t (c) No, go back to the main menu")
             type_update = input(">>>")            
             
 
@@ -147,11 +148,11 @@ def update_game_db():
                 else:
                     update_info2 = {"$set": {"summary" : update_summary}}
                     GameProject.update_one(name_game, update_info2)
-                    print(type_title + " is updated with new information to the summary.")
+                    print(type_title + " is updated with new information to its summary.")
 
             # No edited and quiting to go back to the main menu
             elif type_update == 'c' :
-                print("\nNo edits made to the video game encyclopedia.")
+                print("\nYou are back to the main menu.")
                 break
             else:
                 raise ValueError
@@ -165,7 +166,7 @@ def delete_game_db() :
     while True:
         try:
             print('')
-            print("Enter a title from above to delete: ")
+            print("Enter a title from the encyclopedia above to delete: ")
             type_title2= input(">>>")
             
             find_game2 = GameProject.find_one({"title" : type_title2})
@@ -180,8 +181,8 @@ def delete_game_db() :
         # The error will occur when the title does not exist in the database. 
         except ValueError:
             print('')
-            print('"' + type_title2 + '"' + " does not exist in the database.")
-            print("Please enter a title existed in the database.")
+            print('"' + type_title2 + '"' + " is not found in the Encyclopedia. It does not exist.")
+            print("Please enter a title again.")
 
     print('')
     print('"' + type_title2 + '"' +" is deleted from the encyclopedia.")
@@ -256,7 +257,11 @@ def load_gameslist2():
 
 # Main function
 def main():
-    print("The Video Games Encyclopedia")
+
+    print('---------------------------------------')
+    print("Welcome to the Video Games Encyclopedia")
+    print('---------------------------------------')
+
 
     # Loading the list from the database.
     ''' 
@@ -267,18 +272,18 @@ def main():
     while True:
         try:
             print('')
-            print("The menu to enter:")
-            print("\t1) Add a video game")
-            print("\t2) Edit a new info to the game in the database")
-            print("\t3) View the list of video games")
-            print("\t4) Delete a video game from the database")
-            print("\t5) Quit to save" )
+            print("The main menu to enter (1-5):")
+            print("\t(1) Add a video game")
+            print("\t(2) Edit the encyclopedia")
+            print("\t(3) View the encyclopedia")
+            print("\t(4) Delete a video game from the encyclopedia")
+            print("\t(5) Quit to exit the application " )
 
             menu = input(">>>")
 
             # Quitting the application to save the data
             if menu == '5':
-                print("It is saved!")
+                print("Thank you for using our application")
                 break
 
             # Adding a new video game to the list in the database and JSON file
@@ -289,7 +294,7 @@ def main():
 
             # Updating the edited video game information to the database
             elif menu == '2':
-
+                print("                                                                 -The Video Game Encyclopedia-")
                 #Loading the list from the database
                 load_gameslist()
                 '''
@@ -300,7 +305,7 @@ def main():
 
             # Reading the video game list from the JSON file
             elif menu == '3':
-                
+                print("                                                                 -The Video Game Encyclopedia-")
                 #Loading the list from the JSON file
                 load_gameslist2()
                 
@@ -313,7 +318,7 @@ def main():
                 
             # Deleting a video game information from the database
             elif menu == '4':
-                
+                print("                                                                 -The Video Game Encyclopedia-")
                 #Loading the list from the database
                 load_gameslist()
                 '''
@@ -328,7 +333,7 @@ def main():
                 raise ValueError 
             
         except ValueError:
-            print("Invalid intput. Please enter a number from the menu.")
+            print("Invalid intput. Please enter a number from the main menu.")
 
 if __name__ == "__main__":
     main()
